@@ -1,0 +1,305 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Subida_calificaciones" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Calificaciones" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="Grupo_materia" Type="InArgument(x:String)" />
+    <x:Property Name="Archivo_Excel" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>960,4851</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Subida_calificaciones_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Subida_calificaciones" sap:VirtualizedContainerService.HintSize="804,4786" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="742,4698" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="[Archivo_Excel]">
+      <ueab:ExcelApplicationCard.Body>
+        <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="708,4402" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="ue:ISheetRef" Name="cal_filtradas" />
+              <Variable x:TypeArguments="x:Int32" Name="Contador" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ueab:InsertSheetX DisplayName="Insert Sheet" sap:VirtualizedContainerService.HintSize="646,229" sap2010:WorkflowViewState.IdRef="InsertSheetX_1" Name="[Grupo_materia + &quot;Final&quot;]" ReferenceNewSheetAs="[cal_filtradas]" Workbook="[Excel]" />
+            <Assign sap:VirtualizedContainerService.HintSize="646,123" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Grupo_materia]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Grupo_materia + "Final"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ueab:WriteRangeX Destination="[cal_filtradas]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="646,201" sap2010:WorkflowViewState.IdRef="WriteRangeX_1" IgnoreEmptySource="False" Source="[Calificaciones]" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="646,3764" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="610,3662" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="548,123" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[Contador]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[Calificaciones.RowCount]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <uix:NApplicationCard AttachMode="SingleWindow" DisplayName="Use Browser Chrome: colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3" sap:VirtualizedContainerService.HintSize="548,589" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="918c0d31-58ad-4732-afef-dc3fcf6da6a5" Version="V2" WindowResize="Maximize">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,331" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'ClWk 25%'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,244" sap2010:WorkflowViewState.IdRef="NTypeInto_7" ScopeIdentifier="918c0d31-58ad-4732-afef-dc3fcf6da6a5" Text="%[k(Ctrl)]+[k(V)]" Version="V3">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=fdd6689ff3a4d59ca021af79ff155524" DesignTimeRectangle="1018, 491, 88, 21" DesignTimeScaleFactor="0.8999999761581421" FullSelectorArgument="&lt;webctrl id='TABLE_2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='17' tableRow='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TABLE_2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' class='grd cggvl' tag='TD' aaname='' /&gt;" Guid="a316db98-9326-40bf-ab3a-a9a9740f6cf6" InformativeScreenshot="ff8cb5b1a6be44bd4d2ba5373e7f5bb2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGListaProf3&amp;amp;pIdClase=3472&amp;amp;pGrupo=S1A&amp;amp;ssj=fdd6689ff3a4d59ca021af79ff155524' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CvTextArea="1035, 473, 55, 11" CvTextArgument="CIWk 25%" CvType="Text" DesignTimeRectangle="1036, 471, 53, 15" FullSelectorArgument="&lt;webctrl id='TABLE_2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl aaname=' 25%' idx='11' tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TABLE_2' tag='TABLE' /&gt;&lt;webctrl aaname=' 25%' class='' type='' tag='SPAN' check:innerText='ClWk 25%' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                          </uix:NTypeInto>
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="-8, -8, 1382, 736" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="bf3f0c2aa266ec4a9c5c731470f5f265.jpg" Selector="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGListaProf3&amp;amp;pIdClase=3472&amp;amp;pGrupo=S1A&amp;amp;ssj=fdd6689ff3a4d59ca021af79ff155524' /&gt;" Title="colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" Url="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=fdd6689ff3a4d59ca021af79ff155524" />
+                    </uix:NApplicationCard.TargetApp>
+                  </uix:NApplicationCard>
+                  <ueab:CopyPasteRangeX DestinationRange="[ExcelClipboardX.Value]" DisplayName="Copy/Paste Range" sap:VirtualizedContainerService.HintSize="548,283" sap2010:WorkflowViewState.IdRef="CopyPasteRangeX_5" PasteOptions="All" SourceRange="[Excel.Sheet(Grupo_materia).Range(&quot;C1:C&quot; + Contador.ToString)]" Transpose="False" />
+                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3" sap:VirtualizedContainerService.HintSize="548,589" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" ScopeGuid="918c0d31-58ad-4732-afef-dc3fcf6da6a5" Version="V2">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,331" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'ClWk 25%'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,244" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="918c0d31-58ad-4732-afef-dc3fcf6da6a5" Text="%[k(Ctrl)]+[k(V)]" Version="V3">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" DesignTimeRectangle="934, 326, 84, 21" DesignTimeScaleFactor="0.8999999761581421" FullSelectorArgument="&lt;webctrl id='TABLE_2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='16' tableRow='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TABLE_2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' class='grd cggvl' tag='TD' aaname='' /&gt;" Guid="feeed171-497c-4476-8015-98812256780d" InformativeScreenshot="d50e17129f90a7596efeed027af6856f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGListaProf3&amp;amp;pIdClase=3472&amp;amp;pGrupo=S1A&amp;amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CvTextArea="950, 308, 26, 14" CvTextArgument="Proj." CvType="Text" DesignTimeRectangle="951, 306, 25, 15" ElementType="Text" FullSelectorArgument="&lt;webctrl id='TABLE_2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl aaname='Proj.' idx='3' tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TABLE_2' tag='TABLE' /&gt;&lt;webctrl aaname='Proj.' class='CGColHead tooltips' type='' tag='SPAN' check:innerText='Proj.' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                          </uix:NTypeInto>
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="-8, -8, 1382, 736" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="899fb3357b62a316cd439beeba910213.jpg" Selector="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGListaProf3&amp;amp;pIdClase=3472&amp;amp;pGrupo=S1A&amp;amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df' /&gt;" Title="colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" Url="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" />
+                    </uix:NApplicationCard.TargetApp>
+                  </uix:NApplicationCard>
+                  <ueab:CopyPasteRangeX DestinationRange="[ExcelClipboardX.Value]" DisplayName="Copy/Paste Range" sap:VirtualizedContainerService.HintSize="548,283" sap2010:WorkflowViewState.IdRef="CopyPasteRangeX_6" PasteOptions="All" SourceRange="[Excel.Sheet(Grupo_materia).Range(&quot;D1:D&quot; + Contador.ToString)]" Transpose="False" />
+                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3" sap:VirtualizedContainerService.HintSize="548,589" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="DebuggerApi" ScopeGuid="918c0d31-58ad-4732-afef-dc3fcf6da6a5" Version="V2">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,331" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'ClWk 25%'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,244" sap2010:WorkflowViewState.IdRef="NTypeInto_9" ScopeIdentifier="918c0d31-58ad-4732-afef-dc3fcf6da6a5" Text="%[k(Ctrl)]+[k(V)]" Version="V3">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" DesignTimeRectangle="872, 326, 62, 21" DesignTimeScaleFactor="0.8999999761581421" FullSelectorArgument="&lt;webctrl id='TABLE_2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='15' tableRow='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TABLE_2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' class='grd cggvl' tag='TD' aaname='' /&gt;" Guid="3ef044ad-de37-401f-a0d1-2e0c33f96d30" InformativeScreenshot="e46afe12eb06372bda75eec624dec92d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGListaProf3&amp;amp;pIdClase=3472&amp;amp;pGrupo=S1A&amp;amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CvTextArea="884, 308, 39, 11" CvTextArgument="Ex 25%" CvType="Text" DesignTimeRectangle="885, 306, 37, 15" FullSelectorArgument="&lt;webctrl id='TABLE_2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl aaname=' 25%' idx='9' tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TABLE_2' tag='TABLE' /&gt;&lt;webctrl aaname=' 25%' class='' type='' tag='SPAN' check:innerText='Ex 25%' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                          </uix:NTypeInto>
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="-8, -8, 1382, 736" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsSAAALEgHS3X78AAAJpklEQVRYR61XCVRU5xn9XUKwPT1ptSdp2p42TbfTVGt7cmyaxtosTRp7TGISlUVlRwQs4AKCimyyDIogWzWICA6LwggoqGyyyTLszDgguLBvM8OwIzMot9//ZopoTxpt8p1zeTPvvXn3fst/3w/7OoF/ENay5+D64l8Q9XcRJK6XkOudjVT7bISu9YTTSz8EghhWGn7wTQZsn2dYz4wR+YEX8jx7UOP3ELIAQO4PNBOq/WeQf7gEIW+aYw0zgonhh99EwGYpw/tEfsbUG9VBE5AfAup3AnX2j9DgBNwkIcW+GoS9bQ2AwcLwgK8TsCPoOhn8Vzqi3H8Csv16wlo7oMQcKCJUWum/8/MKEpF/SAaPH/8B/qsMT/k/Iycnh8XUqBdPOK5YgUzXfNwM1pNUEWH6R0BZGHC7AGi5AFS46EXUOwBNx4CTG6PA2BKewDPHuXPnOBYnJiauzpBkhqvi7PNRfFgDmQcR7ADO/42yFAFTI0R6HuiRAXcLgRu8HSRCEQhkuhTT0C7HziWGpz5lGMi/SziclJR0WyK5ODd6hvpdepAyoyxriODUn4G2UmCoHfD5LZB3FJhQ0j10nQvgbcp0UmPHorfg8m3Dk78iODFlzPE9Io4gaOkzMjIkGI2nrBcKiF1Dk58DPNBR+akFqntAbzNVhWaPt0hO916wnYANexvORgaGrwhOfvr06eXJycnxWVlZ2uLiYlRWVqKmtg5jqVT6q/toyg8QAYlJfx+0IoC+m8AsiRhsA7JI3HU6xwW0HQfOmuoeRm+04C0YHx01sHxJcPLY2Fjj3NzcY7W1tdqOjg4MDg5CqVRCqR7GZG0mkLiVehuqFyC1BVLfoUF7DxBvp2s0kLkb9eSN/6QqBWMu3gwjbbU3ZK23Vw4MDLC4uDgD2xMhkUgYkbGKioot7e3tw0NDQwIxP+qhxHB/Fx4kEmmeO5WczIcTcSFlJKpwE60AC/25ekegNYIEmeB+XoTw26ampoSwsLBvUWUNjE+EvLWJNbfWvtTZfe+GUk3kHMr/kBugVGFcUY65L4is0Au4RcusyVVvRnzZNdBRTudbIqkyFphN2YXhnjvC7xoaGkaI/IO0tDRhzv4rpGmDrDKlz7rqrHKm4gs1mi8Po6d1mESoHhOiVJGI5gI8TKBsz1HmpTQPsnAipowbQmhG3IC4T6FL94Cms1Ug55WkCiAlJeUMxbIFAopY4FIl28m6vyN6dWhzismINMthDNmOY8ikY6qZBgVHNOhWaKBSLWiHSg1N1y1MF8biQbIj5s5sxdxpEzxMtCJid0zWXIR6oFcgF0STAKoAxGLxAK2q1wUBRqyOib6vZJ7P9f8q+fORtNLg6fGqcB2qI2ZRFT4rHMtFM8hxnUC6jQbt5SNQqReI4PNBQtRD/Ri5J8dIex00PbehMpyfv88ggGYLRK4j8q2CgEPLBpg76/tlmunoteooLcoCZpG/T4f8vY9Q4KFD1fFZXPebQobtCLrkGmrBowfPg5MK2S4QuAA9PT0gO+cCQOQegoB3WPvS2DfU0RVhMyjxIXIivLJLi4uW08jYPoUs2/vI26MXwkVc2jWB6yEjUKsfz+5JKEmESqmeh3JIBWm1lMqfzMk53AUB+1nfuhy3ia7qE3rySw4zyNs/hbtFWvTU6FAbN41Mmynk7aZKuFNrIrXIsKYqyKgKT66OBcSdA3dQfbcIV1pScUWRghJFLrKuSZCamvq4gKAfDdmWBE1refY8U4nVJPobdeiuANqvALrpOZSGTAoV4a2RRs6SgDHIc/gsPEFOLege7EBqYzQOFG7FwRJLBFa6CDhUYg2PqyaIuHoI6dlpSBYnu9NqYIymPro0+P5ckZe+9LluE5gZI1LylxzaU8yMk82nTSNt86QgoDyIBNiMoVZMbRh+1GtO3t6rQFCpE/aRBYc2+yC0NQT+tB/wVfhC1BKMYzJ/eJfZ4GCOVV3yhXOrEzJPkoCfDQWTgIdFB3S46qrFedNxqNpnMdEPjHQAc3O0zwiexPnNU4KAyqN6AY3pVIF5AUr0DnYjtMwFB8ttcPzWUbg0usKe3NCeHFIPezg3OAuiQms9Wj658JvXvW/QPs3nhYHNRT5TY2VH9NPPM812HkNfvQ6ajlnUJUzh3EdjyHXWCtfrTuqQbjkqLEfuklwA73m2/Cx2F36OcHLFnWTBnNSiwhSb8t8lvCd85ud21DkgrDUUh8vscn8ewX7AHFj3CjKbXGk0TToR8DlI2zSJpA1jEH86hrMfjuPSDtpf0jU+J8UB08jZMwpln2a+/EPKQQSUOCCk3hPutEnhRGbFG7C32AwZLaeQ3ZYAv0onWJZvEq65NrohvMlv8rPzr21jKZtH2dFfKD8uPjLdVxVm8AAuhKb+mps+a746ig7qUBOrRZr5KG7mjM6Xn0/9rV45PApNcPRmIBzoXWBdbYFdRZ/hnkZBe1F9qKf64VPlDGupJVVhB2JuhcPr+vYobr/MmNUvTtigMSs+MtVbE6PPtGC/3oD4cFYeI0eMmsGF7aMojyY7HnrkASoynrqOMuwr3IJQGjSe4TbKNLbel2jnkNOehJByZ0FAckv0fCsi2yIQJvVKEN4ElqyLrWPtSyLXqN6ldlzN85qaLBfdR2XEDIp8pgXzuWClwZWwOygrrkB3d/e8AP6Sau6Swp0qEKoIEh7OSU7Ue+PBw1mkyk/A7drH6B/vRGLLCVhVbRXuiW47Ab9yR70AfWxioiXjzI31vBj48uD6U2vVTgkfDjse/7XKMX13Z+61tCpIJBkQJ4tBm5R5AXwF9Ax2wvu6JS09XzjR/wN2tBveWboFVb35mNSOQjM9BJmyGh5Sfs0WjnRPlCL0gU32X70M5F8eSeJEdrkg4xVxctIx8vAR7mLp6emQy+XzIlT0ao6p8sbhCgf4KfxgR0vOhnrtTBuTiCY/xMhDsFvqAFupFWVvjwDyhsAq17t/ilv2RwPN/w5umQRjwieELBKiIhFzUqkUXV1dQhXk3XXwLDTDCXkQPGWeAhEHHzoOXhX+3Ys2Kv9SHJuwv/zebmbNlhooni4MQl4gvEki9pGVns/Ly8ukTcbFzs7Oi/HVIb5OV9cnRMqCtCGtwbTcXAVP4HBrcoOITIiqMeFRZO6xLIAZrz5pbHjyMwYXQpuKRfHx8UYBAQFGIpHIKP9avhEGseiV42y5ZdZbrofL7WWieq+ZcHngbIQ8SBtaf+C+7w2HCpvsddteDmHLfhfzbMk/dTzPx8qcLV4Vs2TVevFPt5um/37vNskbduvFPzF/LWrxq/yepXv4Xx6M/RuJ9Ddn8pRgnAAAAABJRU5ErkJggg==" InformativeScreenshot="216dec9f2dd962a7e3eddcb61c6facb7.jpg" Selector="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGListaProf3&amp;amp;pIdClase=3472&amp;amp;pGrupo=S1A&amp;amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df' /&gt;" Title="colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" Url="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" />
+                    </uix:NApplicationCard.TargetApp>
+                  </uix:NApplicationCard>
+                  <ueab:CopyPasteRangeX DestinationRange="[ExcelClipboardX.Value]" DisplayName="Copy/Paste Range" sap:VirtualizedContainerService.HintSize="548,283" sap2010:WorkflowViewState.IdRef="CopyPasteRangeX_7" PasteOptions="All" SourceRange="[Excel.Sheet(Grupo_materia).Range(&quot;E1:E&quot; + Contador.ToString)]" Transpose="False" />
+                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3" sap:VirtualizedContainerService.HintSize="548,572" sap2010:WorkflowViewState.IdRef="NApplicationCard_9" InteractionMode="DebuggerApi" ScopeGuid="918c0d31-58ad-4732-afef-dc3fcf6da6a5" Version="V2">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,331" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'ClWk 25%'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,244" sap2010:WorkflowViewState.IdRef="NTypeInto_10" ScopeIdentifier="918c0d31-58ad-4732-afef-dc3fcf6da6a5" Text="%[k(Ctrl)]+[k(V)]" Version="V3">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" DesignTimeRectangle="1106, 326, 82, 21" DesignTimeScaleFactor="0.8999999761581421" FullSelectorArgument="&lt;webctrl id='TABLE_2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='18' tableRow='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TABLE_2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' class='grd cggvl' tag='TD' aaname='' /&gt;" Guid="19aa6cfe-0e00-4b18-bfba-1e588d1c8c59" InformativeScreenshot="9d7468e591bbf62be2cbebac2a083603.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGListaProf3&amp;amp;pIdClase=3472&amp;amp;pGrupo=S1A&amp;amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CvTextArea="1122, 308, 51, 11" CvTextArgument="Hwk 25%" CvType="Text" DesignTimeRectangle="1123, 306, 49, 15" FullSelectorArgument="&lt;webctrl id='TABLE_2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl aaname=' 25%' idx='12' tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TABLE_2' tag='TABLE' /&gt;&lt;webctrl aaname=' 25%' class='' type='' tag='SPAN' check:innerText='Hwk 25%' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                          </uix:NTypeInto>
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="-8, -8, 1382, 736" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="216dec9f2dd962a7e3eddcb61c6facb7.jpg" Selector="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGListaProf3&amp;amp;pIdClase=3472&amp;amp;pGrupo=S1A&amp;amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df' /&gt;" Title="colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" Url="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGListaProf3&amp;pIdClase=3472&amp;pGrupo=S1A&amp;ssj=91bb96da815141aa8dfd66dcc7d0d6df" />
+                    </uix:NApplicationCard.TargetApp>
+                  </uix:NApplicationCard>
+                  <ueab:CopyPasteRangeX DestinationRange="[ExcelClipboardX.Value]" DisplayName="Copy/Paste Range" sap:VirtualizedContainerService.HintSize="450,266" sap2010:WorkflowViewState.IdRef="CopyPasteRangeX_8" PasteOptions="All" SourceRange="[Excel.Sheet(Grupo_materia).Range(&quot;B1:B&quot; + Contador.ToString)]" Transpose="False" />
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+          </Sequence>
+        </ActivityAction>
+      </ueab:ExcelApplicationCard.Body>
+    </ueab:ExcelApplicationCard>
+  </Sequence>
+</Activity>

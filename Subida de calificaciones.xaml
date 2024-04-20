@@ -1,0 +1,334 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Subida_de_calificaciones" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Clase" Type="InArgument(x:String)" />
+    <x:Property Name="Grupo" Type="InArgument(x:String)" />
+    <x:Property Name="Calificaciones" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="Confirmacion_tabla" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>960,3631</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Subida_de_calificaciones_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Security</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Subida_de_calificaciones" sap:VirtualizedContainerService.HintSize="705,3566" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: colaboranet.com/carmensalles/" sap:VirtualizedContainerService.HintSize="643,3478" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="cb51014d-b6ca-42e8-afa6-33b8a557b693" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="609,3238" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataRow" Name="a" />
+              <Variable x:TypeArguments="sd:DataTable" Name="Confirm_names" />
+              <Variable x:TypeArguments="x:String" Name="Cal_sal" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="547,125" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Ingrese sus datos para ingresar a la plataforma&quot;]" />
+            <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'A  javascript:;'" sap:VirtualizedContainerService.HintSize="547,147" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a2e400b5-c4ef-493b-94d8-3bde265e4b9a" InformativeScreenshot="0012a6b0b6e4b3a133fd6dcae6d377c8" Selector="&lt;webctrl aaname='  &amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;Calificaciones &amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;' tag='A' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Calificaciones'" sap:VirtualizedContainerService.HintSize="547,197" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cb51014d-b6ca-42e8-afa6-33b8a557b693" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.colaboranet.com/carmensalles/index.php?pIn=1&amp;e=1&amp;ss=@5006d&amp;" CvTextArea="55, 442, 91, 15" CvTextArgument="Calificaciones" CvType="Text" DesignTimeRectangle="56, 440, 89, 21" DesignTimeScaleFactor="1.100000023841858" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Calificaciones' class='title' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Calificaciones' class='title' tag='SPAN' type='' check:innerText='Calificaciones' /&gt;" Guid="77362647-fef3-47db-810b-8c58c6b65074" InformativeScreenshot="a918c4ae9cdea4f23c21c39e569b36d0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?pIn=1&amp;amp;e=1&amp;amp;ss=@5006d&amp;amp;' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="8, 147, 258, 51" FullSelectorArgument="&lt;webctrl tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='A' type='' class='page-logo' aaname='' /&gt;" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Consulta / captura'" sap:VirtualizedContainerService.HintSize="547,197" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cb51014d-b6ca-42e8-afa6-33b8a557b693" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.colaboranet.com/carmensalles/index.php?pIn=1&amp;e=1&amp;ss=@5006d&amp;" CvTextArea="380, 339, 127, 18" CvTextArgument="Consulta / captura" CvType="Text" DesignTimeRectangle="365, 329, 157, 37" DesignTimeScaleFactor="1.100000023841858" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Consulta / captura' parentid='modal-1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Consulta / captura' parentid='modal-1' tag='A' type='' class='btn btn-link' check:innerText='Consulta / captura' /&gt;" Guid="4ff26216-b27f-468c-95b7-628c479eb794" InformativeScreenshot="7c3be0cf2e01947d6bbdb92d95e36a5d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?pIn=1&amp;amp;e=1&amp;amp;ss=@5006d&amp;amp;' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="384, 234, 114, 18" CvTextArgument="Calificaciones" CvType="Text" DesignTimeRectangle="349, 214, 658, 61" FullSelectorArgument="&lt;webctrl class='modal-header' parentid='modal-1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='modal-header' parentid='modal-1' tag='DIV' type='' aaname='                           ' check:innerText='×&amp;#xD;&amp;#xA; Calificaciones' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NSelectItem DisplayName="Select Item 'Grupo'" sap:VirtualizedContainerService.HintSize="547,197" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[Grupo]" ScopeIdentifier="cb51014d-b6ca-42e8-afa6-33b8a557b693" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="5">
+                  <x:String>Seleccione</x:String>
+                  <x:String>S2A</x:String>
+                  <x:String>S1A</x:String>
+                  <x:String>S3A</x:String>
+                  <x:String>S3B</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGSelClase2&amp;ss=adc3e&amp;" CvElementArea="310, 319, 142, 40" CvType="InputBox" DesignTimeRectangle="312, 320, 139, 37" DesignTimeScaleFactor="1.100000023841858" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='cboGrupo' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='cboGrupo' tag='SELECT' type='' class='cboTopMenu form-control' aaname='' /&gt;" Guid="9348ed5f-d208-4c91-b0ff-e6da0486e811" InformativeScreenshot="64b27d04bb760ded44f0aad74f3eea42.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGSelClase2&amp;amp;ss=adc3e&amp;amp;' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="311, 295, 46, 18" CvTextArgument="Grupo" CvType="Text" DesignTimeRectangle="312, 292, 44, 22" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Grupo' check:innerText='Grupo' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="547,1058" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+              <ui:IfElseIf.ConditionBlocks>
+                <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                  <ui:IfElseIfBlock BlockType="If" Condition="[Clase.contains(&quot;LANGUAGE&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,190" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[Clase]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">LANGUAGE (LISTENING, SPEAKING, READING, WRITING)</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Clase.Contains(&quot;CIVIC&quot;) AndAlso Clase.Contains(&quot;2&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,190" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[Clase]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">FORMACIÓN CÍVICA Y ÉTICA II</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Clase.Contains(&quot;CIVIC&quot;) AndAlso Clase.Contains(&quot;1&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_3">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,190" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[Clase]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">FORMACIÓN CÍVICA Y ÉTICA I</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                </sc:BindingList>
+              </ui:IfElseIf.ConditionBlocks>
+            </ui:IfElseIf>
+            <uix:NSelectItem DisplayName="Select Item 'Curso'" sap:VirtualizedContainerService.HintSize="547,197" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="[Clase]" ScopeIdentifier="cb51014d-b6ca-42e8-afa6-33b8a557b693" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="0" />
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.colaboranet.com/carmensalles/index.php?psMode=CG&amp;pssMode=CGSelClase2&amp;ss=adc3e&amp;" CvElementArea="481, 318, 404, 40" CvType="InputBox" DesignTimeRectangle="484, 320, 400, 37" DesignTimeScaleFactor="1.100000023841858" ElementType="DropDown" FullSelectorArgument="&lt;webctrl parentid='spanCboClase' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='spanCboClase' tag='SELECT' type='' class='form-control' aaname='' /&gt;" Guid="a13d8fce-ac5e-455c-9a3c-0daf20d526af" InformativeScreenshot="5c50ef5698e57bc9ca1a5119109ef21e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGSelClase2&amp;amp;ss=adc3e&amp;amp;' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="483, 295, 41, 14" CvTextArgument="Curso" CvType="Text" DesignTimeRectangle="484, 292, 40, 22" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='spanCboClase' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='spanCboClase' tag='LABEL' type='' class='' aaname='Curso' check:innerText='Curso' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[Confirm_names]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='Name'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='th' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="547,197" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="cb51014d-b6ca-42e8-afa6-33b8a557b693" Version="V3">
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="290, 367, 1049, 447" DesignTimeScaleFactor="1.100000023841858" Guid="dbf0dfd9-3230-4468-881d-ecb761997908" InformativeScreenshot="32c2ab2667ef68674fa06807aaf4889f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/index.php?psMode=CG&amp;amp;pssMode=CGListaProf3&amp;amp;pIdClase=3472&amp;amp;pGrupo=S1A&amp;amp;ssj=342a2470296e49b5c2ab60f817cfc079' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+            <ui:MergeDataTable Destination="[Calificaciones]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="547,173" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[Confirm_names]" />
+            <ui:OutputDataTable DataTable="[Calificaciones]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="547,120" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[Cal_sal]" />
+            <If Condition="[Confirm_names.ColumnCount = Calificaciones.ColumnCount]" sap:VirtualizedContainerService.HintSize="547,543" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,190" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="Cal_salida" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[Confirmacion_tabla]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="496,190" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[Confirmacion_tabla]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1382, 736" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="ddc57fbceb6e01994490e234dc9fb5dc.jpg" Selector="&lt;html app='chrome.exe' title='colaboranet.com/carmensalles/' /&gt;" Title="colaboranet.com/carmensalles/" Url="https://www.colaboranet.com/carmensalles/" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
